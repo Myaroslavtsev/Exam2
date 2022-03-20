@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{50E25614-BCA9-40E3-91D2-1DCA6B52D910}</ProjectGuid>
+    <ProjectGuid>{279F6A7A-1E0A-436B-92AC-BE659C55EA6E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Model</RootNamespace>
     <AssemblyName>Model</AssemblyName>
@@ -34,8 +34,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resistors\" />
+    <Compile Include="Resistors\Resistor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
