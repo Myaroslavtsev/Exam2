@@ -49,6 +49,8 @@
     <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IResistorsRepository.cs" />
+    <Compile Include="ResistorsRepository.cs" />
     <Compile Include="Resistors\Resistor.cs" />
   </ItemGroup>
   <ItemGroup>

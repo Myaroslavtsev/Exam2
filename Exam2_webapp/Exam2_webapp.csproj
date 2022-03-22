@@ -16,10 +16,4 @@
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Mapping\" />
-    <Folder Include="Resistors\" />
-  </ItemGroup>
-
 </Project>

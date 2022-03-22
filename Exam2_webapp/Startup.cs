@@ -4,10 +4,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
+using Exam2_webapp.Mapping;
+using Exam2_webapp.Resistors;
 
 namespace Exam2_webapp
 {
@@ -23,6 +22,14 @@ namespace Exam2_webapp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            //services.AddNewtonsoftJson();
+
+            services
+                .AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" }); })
+                .AddMapping()
+                .AddResistors();
+
             services.AddRazorPages();
         }
 
@@ -49,7 +56,8 @@ namespace Exam2_webapp
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+                //endpoints.MapRazorPages();
             });
         }
     }
