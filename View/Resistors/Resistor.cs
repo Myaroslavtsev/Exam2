@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Resistors
+namespace View.Resistors
 {
     public sealed class Resistor
     {
-        public string Id { get; set; }
-
         public double Value { get; set; }
 
         public double Accuracy { get; set; }
@@ -17,9 +15,5 @@ namespace Model.Resistors
         public double Power { get; set; }
 
         public int Quantity { get; set; }
-
-        public string Material { get; set; }
-
-        public string Manufacturer { get; set; }
     }
 }
