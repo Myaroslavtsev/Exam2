@@ -5,11 +5,65 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="obj\Debug\net5.0\.NETCoreApp,Version=v5.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net5.0\Exam2_webapp.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net5.0\Exam2_webapp.RazorAssemblyInfo.cs" />
+    <Compile Include="obj\Release\net5.0\.NETCoreApp,Version=v5.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Release\net5.0\Exam2_webapp.AssemblyInfo.cs" />
+    <Compile Include="obj\Release\net5.0\Exam2_webapp.RazorAssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="obj\Debug\net5.0\Exam2_webapp.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Exam2_webapp.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="obj\Debug\net5.0\Exam2_webapp.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net5.0\Exam2_webapp.assets.cache" />
+    <None Include="obj\Debug\net5.0\Exam2_webapp.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net5.0\Exam2_webapp.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net5.0\Exam2_webapp.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net5.0\Exam2_webapp.MvcApplicationPartsAssemblyInfo.cache" />
+    <None Include="obj\Debug\net5.0\Exam2_webapp.RazorAssemblyInfo.cache" />
+    <None Include="obj\Exam2_webapp.csproj.nuget.g.props" />
+    <None Include="obj\Exam2_webapp.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\Release\net5.0\Exam2_webapp.AssemblyInfoInputs.cache" />
+    <None Include="obj\Release\net5.0\Exam2_webapp.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Release\net5.0\Exam2_webapp.RazorAssemblyInfo.cache" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
-    <PackageReference Include="MongoDB.Bson" Version="2.15.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.15.0" />
-    <PackageReference Include="MongoDB.Driver.Core" Version="2.15.0" />
-    <PackageReference Include="MongoDB.Libmongocrypt" Version="1.3.0" />
     <PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
@@ -24,6 +78,13 @@
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj" />
     <ProjectReference Include="..\View\View.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net5.0\ref\" />
+    <Folder Include="bin\Release\net5.0\ref\" />
+    <Folder Include="obj\Debug\net5.0\ref\" />
+    <Folder Include="obj\Release\net5.0\ref\" />
   </ItemGroup>
 
 </Project>
