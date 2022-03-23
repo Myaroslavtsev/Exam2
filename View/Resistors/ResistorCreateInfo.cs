@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 namespace View.Resistors
 {
     [DataContract]
-    class ResistorCreateInfo
+    public class ResistorCreateInfo
     {
         [DataMember(IsRequired = true)]
         [Range(0, 1e8, ErrorMessage = "Value must be positive and less 1e8")]
