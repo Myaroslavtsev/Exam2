@@ -11,34 +11,47 @@ namespace Model
 {
     public sealed class ResistorsRepository : Model.IResistorsRepository
     {
-        private readonly IMongoCollection<Resistor> resistorsCollection;
+        private readonly IMongoCollection<Model.Resistors.Resistor> resistorsCollection;
 
-        public ResistorsRepository(IMongoCollection<Resistor> resistorsCollection)
+        public ResistorsRepository(IMongoCollection<Model.Resistors.Resistor> resistorsCollection)
         {
             this.resistorsCollection = resistorsCollection ?? throw new ArgumentNullException(nameof(resistorsCollection));
         }
 
-        public Task<Resistors.Resistor> CreateResistorAsync(Model.Resistors.ResistorCreateInfo createinfo, CancellationToken token)
+        public async Task<Resistors.Resistor> CreateResistorAsync(Model.Resistors.ResistorCreateInfo createinfo, CancellationToken token)
+        {
+            var resistor = new Model.Resistors.Resistor
+            {
+                Id = Guid.NewGuid().ToString(),
+                Resistance = createinfo.Resistance,
+                Accuracy = createinfo.Accuracy ?? 0,
+                Power = createinfo.Power,
+                Quantity = createinfo.Quantity ?? 0,
+                Material = createinfo.Material,
+                Manufacturer = createinfo.Manufacturer
+            };
+
+            await this.resistorsCollection.InsertOneAsync(resistor, cancellationToken: token);
+
+            return resistor;
+        }
+
+        public async Task DeleteResistorAsync(string id, CancellationToken token)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteResistorAsync(string id, CancellationToken token)
+        public async Task<Resistors.Resistor> GetResistorAsync(string id, CancellationToken token)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Resistors.Resistor> GetResistorAsync(string id, CancellationToken token)
+        public async Task<List<Resistors.Resistor>> SearchResisrosAsync(Model.Resistors.ResistorSearchInfo searchinfo, CancellationToken token)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Resistors.Resistor>> SearchResisrosAsync(Model.Resistors.ResistorSearchInfo searchinfo, CancellationToken token)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task UpdateResistorAsync(string id, Model.Resistors.ResistorUpdateInfo updateInfo, CancellationToken token)
+        public async Task UpdateResistorAsync(string id, Model.Resistors.ResistorUpdateInfo updateInfo, CancellationToken token)
         {
             throw new NotImplementedException();
         }

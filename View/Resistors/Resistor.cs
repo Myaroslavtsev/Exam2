@@ -8,7 +8,7 @@ namespace View.Resistors
 {
     public sealed class Resistor
     {
-        public double Value { get; set; }
+        public double Resistance { get; set; }
 
         public double Accuracy { get; set; }
 

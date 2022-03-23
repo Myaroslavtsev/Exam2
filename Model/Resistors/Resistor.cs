@@ -10,7 +10,7 @@ namespace Model.Resistors
     {
         public string Id { get; set; }
 
-        public double Value { get; set; }
+        public double Resistance { get; set; }
 
         public double Accuracy { get; set; }
 
