@@ -8,9 +8,9 @@ using View.Resistors;
 
 namespace Model
 {
-    public class ResistorsRepository : IResistorsRepository
+    public class ResistorsRepository : Model.IResistorsRepository
     {
-        public Task<Resistors.Resistor> CreateResistorAsync(ResistorCreateInfo createinfo, CancellationToken token)
+        public Task<Resistors.Resistor> CreateResistorAsync(Model.Resistors.ResistorCreateInfo createinfo, CancellationToken token)
         {
             throw new NotImplementedException();
         }
@@ -25,12 +25,12 @@ namespace Model
             throw new NotImplementedException();
         }
 
-        public Task<List<Resistors.Resistor>> SearchResisrosAsync(ResistorSearchInfo searchinfo, CancellationToken token)
+        public Task<List<Resistors.Resistor>> SearchResisrosAsync(Model.Resistors.ResistorSearchInfo searchinfo, CancellationToken token)
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateResistorAsync(string id, ResistorUpdateInfo updateInfo, CancellationToken token)
+        public Task UpdateResistorAsync(string id, Model.Resistors.ResistorUpdateInfo updateInfo, CancellationToken token)
         {
             throw new NotImplementedException();
         }

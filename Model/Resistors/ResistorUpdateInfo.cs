@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace View.Resistors
+namespace Model.Resistors
 {
     [DataContract]
-    public class ResistorCreateInfo
+    public class ResistorUpdateInfo
     {
-        [DataMember(IsRequired = true)]
+        [DataMember]
         [Range(0, 1e8, ErrorMessage = "Value must be positive and less 1e8")]
-        public double Resistance { get; set; }
+        public double Value { get; set; }
 
         [DataMember]
         [Range(0, 1, ErrorMessage = "Accuracy nust be positive and less than 1")]
-        public double? Accuracy { get; set; }
+        public double Accuracy { get; set; }
 
-        [DataMember(IsRequired = true)]
+        [DataMember]
         [Range(0, 10000, ErrorMessage = "Power must be positive and less 10k")]
         public double Power { get; set; }
 
         [DataMember]
         [Range(0, 1e6, ErrorMessage = "Quantity must be positive and less than 1 million")]
-        public int? Quantity { get; set; }
+        public int Quantity { get; set; }
 
         [DataMember]
-        [MaxLength(20, ErrorMessage = "The field Material must be an array type with a maximum length of 20'.")]
+        [StringLength(20, ErrorMessage = "Maximum string length for material is 20")]
         public string Material { get; set; }
 
         [DataMember]
-        [MaxLength(40, ErrorMessage = "The field Manufacturer must be an array type with a maximum length of 40.")]
+        [StringLength(40, ErrorMessage = "Maximum string length for material is 40")]
         public string Manufacturer { get; set; }
     }
 }

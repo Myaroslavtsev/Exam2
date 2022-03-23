@@ -6,14 +6,12 @@ namespace Exam2_webapp.Mapping
     {
         public MappingProfile()
         {
-            /*this.AllowNullCollections = true;
+            this.AllowNullCollections = true;
 
-            this.CreateMap<ViewPosts.Post, ModelPosts.Post>(MemberList.None).ReverseMap();
-            this.CreateMap<ViewPosts.PostShortInfo, ModelPosts.Post>(MemberList.None).ReverseMap();
-            this.CreateMap<ViewPosts.PostCreateInfo, ModelPosts.PostCreateInfo>(MemberList.None).ReverseMap();
-            this.CreateMap<ViewPosts.PostSearchInfo, ModelPosts.PostSearchInfo>(MemberList.None).ReverseMap();
-            this.CreateMap<ViewPosts.PostsList, ModelPosts.PostsList>(MemberList.None).ReverseMap();
-            this.CreateMap<ViewPosts.PostUpdateInfo, ModelPosts.PostUpdateInfo>(MemberList.None).ReverseMap();*/
+            this.CreateMap <View.Resistors.Resistor, Model.Resistors.Resistor>(MemberList.None).ReverseMap();
+            this.CreateMap<View.Resistors.ResistorCreateInfo, Model.Resistors.ResistorCreateInfo>(MemberList.None).ReverseMap();
+            this.CreateMap<View.Resistors.ResistorSearchInfo, Model.Resistors.ResistorSearchInfo>(MemberList.None).ReverseMap();
+            this.CreateMap<View.Resistors.ResistorUpdateInfo, Model.Resistors.ResistorUpdateInfo>(MemberList.None).ReverseMap();
         }
     }
 }

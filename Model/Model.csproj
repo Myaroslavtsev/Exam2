@@ -53,6 +53,9 @@
     <Compile Include="IResistorsRepository.cs" />
     <Compile Include="ResistorsRepository.cs" />
     <Compile Include="Resistors\Resistor.cs" />
+    <Compile Include="Resistors\ResistorCreateInfo.cs" />
+    <Compile Include="Resistors\ResistorSearchInfo.cs" />
+    <Compile Include="Resistors\ResistorUpdateInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
