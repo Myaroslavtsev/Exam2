@@ -11,11 +11,11 @@ namespace Model
 {
     public sealed class ResistorsRepository : Model.IResistorsRepository
     {
-        private readonly IMongoCollection<Post> postsCollection;
+        private readonly IMongoCollection<Resistor> resistorsCollection;
 
-        public PostsRepository(IMongoCollection<Post> postsCollection)
+        public ResistorsRepository(IMongoCollection<Resistor> resistorsCollection)
         {
-            this.postsCollection = postsCollection ?? throw new ArgumentNullException(nameof(postsCollection));
+            this.resistorsCollection = resistorsCollection ?? throw new ArgumentNullException(nameof(resistorsCollection));
         }
 
         public Task<Resistors.Resistor> CreateResistorAsync(Model.Resistors.ResistorCreateInfo createinfo, CancellationToken token)
