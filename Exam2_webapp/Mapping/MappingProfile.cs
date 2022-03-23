@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using View;
+using Model;
 
 namespace Exam2_webapp.Mapping
 {
