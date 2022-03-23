@@ -5,11 +5,19 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using View.Resistors;
+using MongoDB.Driver;
 
 namespace Model
 {
-    public class ResistorsRepository : Model.IResistorsRepository
+    public sealed class ResistorsRepository : Model.IResistorsRepository
     {
+        private readonly IMongoCollection<Post> postsCollection;
+
+        public PostsRepository(IMongoCollection<Post> postsCollection)
+        {
+            this.postsCollection = postsCollection ?? throw new ArgumentNullException(nameof(postsCollection));
+        }
+
         public Task<Resistors.Resistor> CreateResistorAsync(Model.Resistors.ResistorCreateInfo createinfo, CancellationToken token)
         {
             throw new NotImplementedException();

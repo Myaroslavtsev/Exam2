@@ -38,6 +38,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Core\Compression\Snappy\lib\linux\libsnappy64.so" />
+    <None Include="Core\Compression\Snappy\lib\osx\libsnappy64.dylib" />
+    <None Include="Core\Compression\Zstandard\lib\linux\libzstd.so" />
+    <None Include="Core\Compression\Zstandard\lib\osx\libzstd.dylib" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +58,11 @@
     <Compile Include="Resistors\ResistorSearchInfo.cs" />
     <Compile Include="Resistors\ResistorUpdateInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\Compression\Snappy\lib\win\snappy32.dll" />
+    <Content Include="Core\Compression\Snappy\lib\win\snappy64.dll" />
+    <Content Include="Core\Compression\Zstandard\lib\win\libzstd.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -62,5 +71,7 @@
     <Error Condition="!Exists('..\Exam2_webapp\packages\NUnit.3.13.3\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\Exam2_webapp\packages\NUnit.3.13.3\build\NUnit.props'))" />
     <Error Condition="!Exists('..\Exam2_webapp\packages\NUnit3TestAdapter.4.2.1\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\Exam2_webapp\packages\NUnit3TestAdapter.4.2.1\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('..\Exam2_webapp\packages\Swashbuckle.AspNetCore.6.3.0\build\Swashbuckle.AspNetCore.props')" Text="$([System.String]::Format('$(ErrorText)', '..\Exam2_webapp\packages\Swashbuckle.AspNetCore.6.3.0\build\Swashbuckle.AspNetCore.props'))" />
+    <Error Condition="!Exists('..\Exam2_webapp\packages\MongoDB.Driver.Core.2.15.0\build\MongoDB.Driver.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Exam2_webapp\packages\MongoDB.Driver.Core.2.15.0\build\MongoDB.Driver.Core.targets'))" />
   </Target>
+  <Import Project="..\Exam2_webapp\packages\MongoDB.Driver.Core.2.15.0\build\MongoDB.Driver.Core.targets" Condition="Exists('..\Exam2_webapp\packages\MongoDB.Driver.Core.2.15.0\build\MongoDB.Driver.Core.targets')" />
 </Project>
