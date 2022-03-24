@@ -55,8 +55,14 @@ namespace Exam2_webapp.Controllers
             var resistors = await this.resistorsService.SearchResistorAsync(searchInfo, token).ConfigureAwait(false);
             return this.Ok(resistors);
         }
+        
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteAsync(string id, CancellationToken token)
+        {
+            await this.resistorsService.DeleteResistorAsync(id, token).ConfigureAwait(false);
+            return this.NoContent();
+        }
 
         //[HttpPatch("{id}")]
-        //[HttpDelete("{id}")]
     }
 }

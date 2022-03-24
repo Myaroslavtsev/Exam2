@@ -40,7 +40,7 @@ namespace Model
 
         public async Task DeleteResistorAsync(string id, CancellationToken token)
         {
-            throw new NotImplementedException();
+            await this.resistorsCollection.DeleteOneAsync(resistor => resistor.Id == id, token);
         }
 
         public async Task<Resistors.Resistor> GetResistorAsync(string id, CancellationToken token)

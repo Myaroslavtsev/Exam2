@@ -61,5 +61,10 @@ namespace Exam2_webapp.Resistors
             var resistors = await this.resistorsRepository.SearchResisrosAsync(modelSearchInfo, token);
             return resistors;
         }
+
+        public async Task DeleteResistorAsync(string id, CancellationToken token)
+        {
+            await resistorsRepository.DeleteResistorAsync(id, token);
+        }
     }
 }
