@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Exam2_webapp.Resistors;
 using System.ComponentModel.DataAnnotations;
+using Model.Exceptions;
 
 namespace Exam2_webapp.Controllers
 {
@@ -42,7 +43,7 @@ namespace Exam2_webapp.Controllers
                 var resistor = await this.resistorsService.GetResistorAsync(id, token).ConfigureAwait(false);
                 return this.Ok(resistor);
             }
-            catch (ValidationException ex)
+            catch (ResistorNotFoundException ex)
             {
                 return this.NotFound();
             }
