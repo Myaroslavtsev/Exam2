@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using View.Resistors;
 using MongoDB.Driver;
+using Model.Exceptions;
 
 namespace Model
 {
@@ -43,7 +44,17 @@ namespace Model
 
         public async Task<Resistors.Resistor> GetResistorAsync(string id, CancellationToken token)
         {
-            throw new NotImplementedException();
+            var resistor = await this.resistorsCollection
+                .Find(it => it.Id == id)
+                .FirstOrDefaultAsync(token)
+                .ConfigureAwait(false);
+
+            if (resistor is null)
+            {
+                throw new ResistorNotFoundException(id);
+            }
+
+            return resistor;
         }
 
         public async Task<List<Resistors.Resistor>> SearchResisrosAsync(Model.Resistors.ResistorSearchInfo searchinfo, CancellationToken token)

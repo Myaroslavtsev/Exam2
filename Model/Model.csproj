@@ -144,6 +144,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\ResistorNotFoundException.cs" />
     <Compile Include="IResistorsRepository.cs" />
     <Compile Include="ResistorsRepository.cs" />
     <Compile Include="Resistors\Resistor.cs" />
@@ -151,9 +152,7 @@
     <Compile Include="Resistors\ResistorSearchInfo.cs" />
     <Compile Include="Resistors\ResistorUpdateInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\View\View.csproj">
       <Project>{6feb0bfb-7431-4214-a9ef-abb325c29a00}</Project>

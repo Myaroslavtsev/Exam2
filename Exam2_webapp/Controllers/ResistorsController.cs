@@ -25,7 +25,7 @@ namespace Exam2_webapp.Controllers
         {
             try
             {
-                var resistor = await this.resistorsService.CreateResistorAsync(createInfo, token);
+                var resistor = await this.resistorsService.CreateResistorAsync(createInfo, token).ConfigureAwait(false);
                 return this.Ok(resistor);
             }
             catch (ValidationException ex)
@@ -34,7 +34,20 @@ namespace Exam2_webapp.Controllers
             }
         }
 
-        //[HttpGet("{id}")]
+        [HttpGet("{id}")]
+        public async Task<ActionResult> GetAsync(string id, CancellationToken token)
+        {
+            try
+            {
+                var resistor = await this.resistorsService.GetResistorAsync(id, token).ConfigureAwait(false);
+                return this.Ok(resistor);
+            }
+            catch (ValidationException ex)
+            {
+                return this.NotFound();
+            }
+        }
+
         //[HttpGet("")]
         //[HttpPatch("{id}")]
         //[HttpDelete("{id}")]

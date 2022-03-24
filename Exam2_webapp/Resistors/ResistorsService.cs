@@ -45,5 +45,13 @@ namespace Exam2_webapp.Resistors
                 throw new ValidationException("Resistance value must be positive");
         }
 
+        public async Task<View.Resistors.Resistor> GetResistorAsync(string id, CancellationToken token)
+        {
+            var modelResistor = await this.resistorsRepository.GetResistorAsync(id, token);
+
+            var viewResistor = this.mapper.Map<Model.Resistors.Resistor, View.Resistors.Resistor>(modelResistor);
+            return viewResistor;
+        }
+
     }
 }
