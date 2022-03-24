@@ -13,19 +13,19 @@ namespace Model.Resistors
     {
         [DataMember]
         [Range(0, 1e8, ErrorMessage = "Value must be positive and less 1e8")]
-        public double Value { get; set; }
+        public double? Resistance { get; set; }
 
         [DataMember]
         [Range(0, 1, ErrorMessage = "Accuracy nust be positive and less than 1")]
-        public double Accuracy { get; set; }
+        public double? Accuracy { get; set; }
 
         [DataMember]
         [Range(0, 10000, ErrorMessage = "Power must be positive and less 10k")]
-        public double Power { get; set; }
+        public double? Power { get; set; }
 
         [DataMember]
         [Range(0, 1e6, ErrorMessage = "Quantity must be positive and less than 1 million")]
-        public int Quantity { get; set; }
+        public int? Quantity { get; set; }
 
         [DataMember]
         [StringLength(20, ErrorMessage = "Maximum string length for material is 20")]

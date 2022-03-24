@@ -83,12 +83,12 @@ namespace Model
                 filter &= builder.Gte(resistor => resistor.Quantity, searchInfo.MinQuantity);
             }
 
-            if (searchInfo.Material != string.Empty && searchInfo.Material != null)
+            if (!string.IsNullOrEmpty(searchInfo.Material))
             {
                 filter &= builder.Eq(resistor => resistor.Material, searchInfo.Material);
             }
 
-            if (searchInfo.Manufacturer != string.Empty && searchInfo.Manufacturer != null)
+            if (!string.IsNullOrEmpty(searchInfo.Manufacturer))
             {
                 filter &= builder.Eq(resistor => resistor.Manufacturer, searchInfo.Manufacturer);
             }
@@ -105,7 +105,47 @@ namespace Model
 
         public async Task UpdateResistorAsync(string id, Model.Resistors.ResistorUpdateInfo updateInfo, CancellationToken token)
         {
-            throw new NotImplementedException();
+            var updates = new List<UpdateDefinition<Model.Resistors.Resistor>>();
+
+            if (updateInfo.Resistance != null)
+            {
+                updates.Add(Builders<Model.Resistors.Resistor>.Update.Set(r => r.Resistance, updateInfo.Resistance));
+            }
+
+            if (updateInfo.Accuracy != null)
+            {
+                updates.Add(Builders<Model.Resistors.Resistor>.Update.Set(r => r.Accuracy, updateInfo.Accuracy));
+            }
+
+            if (updateInfo.Power != null)
+            {
+                updates.Add(Builders<Model.Resistors.Resistor>.Update.Set(r => r.Power, updateInfo.Power));
+            }
+
+            if (updateInfo.Quantity != null)
+            {
+                updates.Add(Builders<Model.Resistors.Resistor>.Update.Set(r => r.Quantity, updateInfo.Quantity));
+            }
+
+            if (!string.IsNullOrEmpty(updateInfo.Material))
+            {
+                updates.Add(Builders<Model.Resistors.Resistor>.Update.Set(r => r.Material, updateInfo.Material));
+            }
+
+            if (!string.IsNullOrEmpty(updateInfo.Manufacturer))
+            {
+                updates.Add(Builders<Model.Resistors.Resistor>.Update.Set(r => r.Manufacturer, updateInfo.Manufacturer));
+            }
+
+            var update = Builders<Model.Resistors.Resistor>.Update.Combine(updates);
+            var updateResult = await this.resistorsCollection
+                .UpdateOneAsync(it => it.Id == id, update, cancellationToken: token)
+                .ConfigureAwait(false);
+
+            if (updateResult.ModifiedCount == 0)
+            {
+                throw new ResistorNotFoundException(id);
+            }
         }
     }
 }

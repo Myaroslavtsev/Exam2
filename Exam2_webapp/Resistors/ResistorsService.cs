@@ -32,19 +32,6 @@ namespace Exam2_webapp.Resistors
             return viewResistor;
         }
 
-        private static void ValidateOnCreate(Model.Resistors.ResistorCreateInfo createInfo)
-        {
-            if (createInfo.Accuracy != null && 
-                (createInfo.Accuracy <= 0 || createInfo.Accuracy >= 1))
-                throw new ValidationException("Accuracy value out of range");
-
-            if (createInfo.Power <= 0)
-                throw new ValidationException("Power value must be positive");
-
-            if (createInfo.Resistance <= 0)
-                throw new ValidationException("Resistance value must be positive");
-        }
-
         public async Task<View.Resistors.Resistor> GetResistorAsync(string id, CancellationToken token)
         {
             var modelResistor = await this.resistorsRepository.GetResistorAsync(id, token);
@@ -65,6 +52,47 @@ namespace Exam2_webapp.Resistors
         public async Task DeleteResistorAsync(string id, CancellationToken token)
         {
             await resistorsRepository.DeleteResistorAsync(id, token);
+        }
+
+        public async Task UpdateResistorAsync(
+            string id, 
+            View.Resistors.ResistorUpdateInfo viewUpdateInfo,
+            CancellationToken token)
+        {
+            var modelUpdateInfo = this.mapper.Map<View.Resistors.ResistorUpdateInfo, Model.Resistors.ResistorUpdateInfo>(viewUpdateInfo);
+            ValidateOnUpdate(modelUpdateInfo);
+            await this.resistorsRepository.UpdateResistorAsync(id, modelUpdateInfo, token);
+        }
+        private static void ValidateOnCreate(Model.Resistors.ResistorCreateInfo createInfo)
+        {
+            if (createInfo.Accuracy != null &&
+                (createInfo.Accuracy <= 0 || createInfo.Accuracy >= 1))
+                throw new ValidationException("Accuracy value out of range");
+
+            if (createInfo.Power <= 0)
+                throw new ValidationException("Power value must be positive");
+
+            if (createInfo.Resistance <= 0)
+                throw new ValidationException("Resistance value must be positive");
+
+            if (createInfo.Quantity < 0)
+                throw new ValidationException("Quantity value must be positive");
+        }
+
+        private static void ValidateOnUpdate(Model.Resistors.ResistorUpdateInfo updateInfo)
+        {
+            if (updateInfo.Accuracy != null &&
+                (updateInfo.Accuracy <= 0 || updateInfo.Accuracy >= 1))
+                throw new ValidationException("Accuracy value out of range");
+
+            if (updateInfo.Power <= 0)
+                throw new ValidationException("Power value must be positive");
+
+            if (updateInfo.Resistance <= 0)
+                throw new ValidationException("Resistance value must be positive");
+
+            if (updateInfo.Quantity < 0)
+                throw new ValidationException("Quantity value must be positive");
         }
     }
 }

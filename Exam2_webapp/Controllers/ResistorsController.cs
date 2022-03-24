@@ -43,7 +43,7 @@ namespace Exam2_webapp.Controllers
                 var resistor = await this.resistorsService.GetResistorAsync(id, token).ConfigureAwait(false);
                 return this.Ok(resistor);
             }
-            catch (ResistorNotFoundException ex)
+            catch (ResistorNotFoundException)
             {
                 return this.NotFound();
             }
@@ -63,6 +63,25 @@ namespace Exam2_webapp.Controllers
             return this.NoContent();
         }
 
-        //[HttpPatch("{id}")]
+        [HttpPatch("{id}")]
+        public async Task<ActionResult> UpdateAsync(
+            string id, 
+            [FromBody] View.Resistors.ResistorUpdateInfo updateInfo, 
+            CancellationToken token)
+        {
+            try
+            {
+                await this.resistorsService.UpdateResistorAsync(id, updateInfo, token).ConfigureAwait(false);
+                return this.NoContent();
+            }
+            catch (ValidationException ex)
+            {
+                return this.BadRequest(ex.ValidationResult);
+            }
+            catch (ResistorNotFoundException)
+            {
+                return this.NotFound();
+            }
+        }
     }
 }
