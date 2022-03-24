@@ -50,7 +50,7 @@ namespace Exam2_webapp.Controllers
         }
 
         [HttpGet("")]
-        public async Task<ActionResult> SearchAsync(View.Resistors.ResistorSearchInfo searchInfo, CancellationToken token)
+        public async Task<ActionResult> SearchAsync([FromQuery] View.Resistors.ResistorSearchInfo searchInfo, CancellationToken token)
         {            
             var resistors = await this.resistorsService.SearchResistorAsync(searchInfo, token).ConfigureAwait(false);
             return this.Ok(resistors);

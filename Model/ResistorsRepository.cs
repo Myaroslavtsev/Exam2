@@ -83,12 +83,12 @@ namespace Model
                 filter &= builder.Gte(resistor => resistor.Quantity, searchInfo.MinQuantity);
             }
 
-            if (searchInfo.Material != string.Empty)
+            if (searchInfo.Material != string.Empty && searchInfo.Material != null)
             {
                 filter &= builder.Eq(resistor => resistor.Material, searchInfo.Material);
             }
 
-            if (searchInfo.Manufacturer != string.Empty)
+            if (searchInfo.Manufacturer != string.Empty && searchInfo.Manufacturer != null)
             {
                 filter &= builder.Eq(resistor => resistor.Manufacturer, searchInfo.Manufacturer);
             }
