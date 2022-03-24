@@ -49,7 +49,13 @@ namespace Exam2_webapp.Controllers
             }
         }
 
-        //[HttpGet("")]
+        [HttpGet("")]
+        public async Task<ActionResult> SearchAsync(View.Resistors.ResistorSearchInfo searchInfo, CancellationToken token)
+        {            
+            var resistors = await this.resistorsService.SearchResistorAsync(searchInfo, token).ConfigureAwait(false);
+            return this.Ok(resistors);
+        }
+
         //[HttpPatch("{id}")]
         //[HttpDelete("{id}")]
     }

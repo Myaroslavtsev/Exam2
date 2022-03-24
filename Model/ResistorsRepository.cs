@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using View.Resistors;
+using MongoDB;
 using MongoDB.Driver;
 using Model.Exceptions;
 
@@ -57,9 +58,49 @@ namespace Model
             return resistor;
         }
 
-        public async Task<List<Resistors.Resistor>> SearchResisrosAsync(Model.Resistors.ResistorSearchInfo searchinfo, CancellationToken token)
+        public async Task<List<Resistors.Resistor>> SearchResisrosAsync(Model.Resistors.ResistorSearchInfo searchInfo, CancellationToken token)
         {
-            throw new NotImplementedException();
+            var builder = Builders<Model.Resistors.Resistor>.Filter;
+            var filter = builder.Empty;
+
+            if (searchInfo.Resistance != null)
+            {
+                filter &= builder.Eq(resistor => resistor.Resistance, searchInfo.Resistance);
+            }
+
+            if (searchInfo.MaxAccuracy != null)
+            {
+                filter &= builder.Lte(resistor => resistor.Accuracy, searchInfo.MaxAccuracy);
+            }
+
+            if (searchInfo.MinPower != null)
+            {
+                filter &= builder.Gte(resistor => resistor.Power, searchInfo.MinPower);
+            }
+
+            if (searchInfo.MinQuantity != null)
+            {
+                filter &= builder.Gte(resistor => resistor.Quantity, searchInfo.MinQuantity);
+            }
+
+            if (searchInfo.Material != string.Empty)
+            {
+                filter &= builder.Eq(resistor => resistor.Material, searchInfo.Material);
+            }
+
+            if (searchInfo.Manufacturer != string.Empty)
+            {
+                filter &= builder.Eq(resistor => resistor.Manufacturer, searchInfo.Manufacturer);
+            }
+
+            var resistorsCursor = await this.resistorsCollection.FindAsync(filter);
+            var resistors = await resistorsCursor
+                .ToListAsync(token);
+            var resistorsList = resistors
+                .Skip(searchInfo.Offset ?? 0)
+                .Take(searchInfo.Limit ?? 20)
+                .ToList();
+            return resistorsList;
         }
 
         public async Task UpdateResistorAsync(string id, Model.Resistors.ResistorUpdateInfo updateInfo, CancellationToken token)

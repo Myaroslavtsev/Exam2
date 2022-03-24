@@ -53,5 +53,13 @@ namespace Exam2_webapp.Resistors
             return viewResistor;
         }
 
+        // Return model? Convert list to view?
+        public async Task<List<Model.Resistors.Resistor>> SearchResistorAsync(View.Resistors.ResistorSearchInfo viewSearchInfo, CancellationToken token)
+        {
+            var modelSearchInfo = this.mapper.Map<View.Resistors.ResistorSearchInfo, Model.Resistors.ResistorSearchInfo>(viewSearchInfo);
+
+            var resistors = await this.resistorsRepository.SearchResisrosAsync(modelSearchInfo, token);
+            return resistors;
+        }
     }
 }
