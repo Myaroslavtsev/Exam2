@@ -17,7 +17,7 @@ namespace Exam2_webapp.Client
         Task<View.Resistors.Resistor> GetResistorAsync(string id);
 
         // Get("")
-        Task<View.Resistors.Resistor> SearchResistorAsync(View.Resistors.ResistorSearchInfo searchInfo);
+        Task<View.Resistors.Resistor[]> SearchResistorAsync(View.Resistors.ResistorSearchInfo searchInfo);
 
         // Delete("{id}")
         Task DeleteResistorAsync(string id);
